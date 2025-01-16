@@ -134,7 +134,7 @@ def stable_diffusion_2(
             raise ValueError('Cannot use tracked latent_statistics when using the pretrained vae.')
         # Use the pretrained vae
         downsample_factor = 8
-        vae = AutoencoderKL.from_pretrained(model_name, subfolder='vae', torch_dtype=precision)
+        vae = AutoencoderKL.from_pretrained("stabilityai/stable-diffusion-2-1", subfolder='vae', torch_dtype=precision)
     else:
         # Use a custom autoencoder
         vae, latent_statistics = load_autoencoder(autoencoder_path, autoencoder_local_path, torch_dtype=precision)
@@ -1300,9 +1300,9 @@ def build_diffusers_autoencoder(model_name: str = 'stabilityai/stable-diffusion-
     # Get the model architecture and optionally the pretrained weights.
     if pretrained:
         if vae_subfolder:
-            model = AutoencoderKL.from_pretrained(model_name, subfolder='vae')
+            model = AutoencoderKL.from_pretrained("stabilityai/stable-diffusion-2-1", subfolder='vae')
         else:
-            model = AutoencoderKL.from_pretrained(model_name)
+            model = AutoencoderKL.from_pretrained("stabilityai/stable-diffusion-2-1")
     else:
         if vae_subfolder:
             config = PretrainedConfig.get_config_dict(model_name, subfolder='vae')
