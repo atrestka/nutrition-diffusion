@@ -44,6 +44,7 @@ class StreamingFood101Dataset(StreamingDataset):
         download_timeout: float = 120,
         batch_size: Optional[int] = None,
         num_canonical_nodes: Optional[int] = None,
+        **kwargs
     ) -> None:
 
         super().__init__(
