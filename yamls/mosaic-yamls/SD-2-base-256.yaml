@@ -60,7 +60,6 @@ parameters:
       _target_: diffusion.datasets.food101.food101.build_streaming_Food101_dataloader 
       remote: s3://nutrition-training/MDS/food-101/
       local: /cache/
-      resize_size: 256
       prefetch_factor: 2
       num_workers: 8
       persistent_workers: True
