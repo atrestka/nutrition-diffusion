@@ -87,7 +87,7 @@ def build_streaming_Food101_dataloader(
     drop_last: bool = True,
     shuffle: bool = True,
     num_canonical_nodes: Optional[int] = None,
-    **dataloader_kwargs,
+    **dataloader_kwargs
 ):
     """Builds a streaming food-101 dataloader.
 
@@ -133,6 +133,7 @@ def build_streaming_Food101_dataloader(
     if num_samples is not None:
         dataset = torch.utils.data.Subset(dataset, range(num_samples))  # type: ignore
 
+    dataloader_kwargs.pop('tokenizer', None)  # Remove tokenizer from dataloader kwargs if it exists
     dataloader = DataLoader(
         dataset=dataset,
         batch_size=batch_size,
