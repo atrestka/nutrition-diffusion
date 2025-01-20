@@ -22,8 +22,8 @@ dataset:
   eval_batch_size: 1024  # Global evaluation batch size
   train_dataset:
     _target_: diffusion.datasets.food101.food101.build_streaming_Food101_dataloader
-    remote: s3://nutrition-training/MDS/food-101/
-    local: /cache/
+    remote: s3://nutrition-training/MDS/food-101
+    local: /cache
     drop_last: true
     shuffle: true
     prefetch_factor: 2
@@ -34,8 +34,8 @@ dataset:
     num_canonical_nodes: 64
   eval_dataset:
     _target_: diffusion.datasets.food101.food101.build_streaming_Food101_dataloader
-    remote:  s3://nutrition-training/MDS/food-101/
-    local: /cache/
+    remote:  s3://nutrition-training/MDS/food-101
+    local: /eval_cache
     prefetch_factor: 2
     num_workers: 8
     persistent_workers: True
@@ -81,7 +81,7 @@ trainer:
   device_train_microbatch_size: 16
   run_name: ${name}
   seed: ${seed}
-  save_folder:  /outputs/
+  save_folder:  /outputs
   save_interval: 10000ba
   save_overwrite: true
   autoresume: false
