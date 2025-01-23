@@ -46,7 +46,7 @@ optimizer:
   weight_decay: 0.01
 scheduler:
   _target_: composer.optim.LinearWithWarmupScheduler
-  t_warmup: 10000ba
+  t_warmup: 5000ba
   alpha_f: 1.0
 logger:
   wandb:
@@ -77,12 +77,12 @@ trainer:
   _target_: composer.Trainer
   device: gpu
   max_duration: 550000ba
-  eval_interval: 10000ba
+  eval_interval: 5000ba
   device_train_microbatch_size: 16
   run_name: ${name}
   seed: ${seed}
   save_folder:  /outputs
-  save_interval: 10000ba
+  save_interval: 5000ba
   save_overwrite: true
   autoresume: false
   # fsdp_config:
