@@ -11,7 +11,7 @@ algorithms:
     precision: amp_fp16
 model:
   _target_: diffusion.models.models.stable_diffusion_2
-  pretrained: false
+  pretrained: True
   precomputed_latents: true
   encode_latents_in_fp16: true
   fsdp: true
@@ -46,7 +46,7 @@ optimizer:
   weight_decay: 0.01
 scheduler:
   _target_: composer.optim.LinearWithWarmupScheduler
-  t_warmup: 5000ba
+  t_warmup: 3000ba
   alpha_f: 1.0
 logger:
   wandb:
